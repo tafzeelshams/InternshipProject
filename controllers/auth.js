@@ -17,9 +17,11 @@ exports.login = async(req,res) => {
 			})
 		}
 		db.query('SELECT * from users WHERE username = ?', [username], async(error,results) => {
+			/*
 			let hashedPassword = await bcrypt.hash(password,8);
 			console.log(hashedPassword);
-			if(!results || !(await bcrypt.compare(password,results[0].password))) {
+			*/
+			if(results.length===0 || !(await bcrypt.compare(password,results[0].password))) {
 				res.status(401).render('login', {
 					message: 'Username or password is Incorrect'
 				})

@@ -76,7 +76,7 @@ function initGraph(jsonArr){
   var layout = {
     height: 670,
     width: 1440,
-    title: "Graph Plotting",
+    title: "Graph Plot",
     yaxis: {
       linecolor: 'lightblue',
       linewidth: 2,
@@ -129,7 +129,7 @@ function initGraph(jsonArr){
 
 
 function getByMinute5(){
-  console.log("Hello5");
+  //console.log("Hello5");
   const xhr = new XMLHttpRequest();
   
     //xhr.open('GET','https://reqres.in/api/users');
@@ -154,12 +154,12 @@ function getByMinute5(){
     var layout = {
       height: 670,
       width: 1440,
-      title: "Historic Prices",
+      title: "Graph Plot",
       yaxis: {
         linecolor: 'lightblue',
         linewidth: 2,
         mirror: true,
-        title: "price"
+        title: "Value"
       },
       xaxis: {
         linecolor: 'lightblue',
@@ -180,7 +180,7 @@ function getByMinute5(){
 }
 
 function getByMinute15(){
-  console.log("Hello15");
+  //console.log("Hello15");
   const xhr = new XMLHttpRequest();
   
     //xhr.open('GET','https://reqres.in/api/users');
@@ -205,18 +205,18 @@ function getByMinute15(){
     var layout = {
       height: 670,
       width: 1440,
-      title: "Historic Prices",
+      title: "Graph Plot",
       yaxis: {
         linecolor: 'lightblue',
         linewidth: 2,
         mirror: true,
-        title: "price"
+        title: "Value"
       },
       xaxis: {
         linecolor: 'lightblue',
         linewidth: 2,
         mirror: true,
-        title: "time"
+        title: "Time"
       },
       legend: {
         y: 0.5,
