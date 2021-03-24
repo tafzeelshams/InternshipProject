@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home Page</title>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+	<nav>
+		<h4> Project </h4>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/login">Login</a></li>
+		</ul>
+	</nav>
+	<div id=main>
+		<div id=loginCard>
+			<div id="cardHeader">
+				
+			</div>
+			<div id="cardBody">
+				<form action="/auth/login" method="POST">
+					<label>Username</label>
+					<input type="text" name="username">
+					<label>Password</label>
+					<input type="password" name="password">
+					<button type="submit">Login</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	{{#if message }}
+		<h4>{{message}}</h4>
+	{{/if}}
+</body>
+</html>
