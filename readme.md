@@ -15,22 +15,22 @@ Edit the `databaseConnection.py` file according to the database created in above
 ### Step 3 : Establish NodeJS application.
 (Make Sure NodeJS is installed)
 ##### Execute these command on current directory
-`npm init -y`
+`npm init -y`  
 `npm i express mysql dotenv hbs bcryptjs`
 
 ##### Create .env file and update database details
-DATABASE = <databaseName>
-DATABASE_HOST = <hostName>
-DATABASE_USER = <username>
-DATABASE_PASSWORD = <password>
+DATABASE = `<databaseName>`  
+DATABASE_HOST = `<hostName>`  
+DATABASE_USER = `<username>`  
+DATABASE_PASSWORD = `<password>`  
 
 ##### Start the NodeJS application by executing
-`node app.js`
+`node app.js`  
 
 ---
 
 ### Step 4 : Register User
-Open `localhost/3001/register`
+Open `localhost/3001/register`  
 Fill in the details.
 
 ---
