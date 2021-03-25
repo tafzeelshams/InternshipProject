@@ -35,28 +35,42 @@ exports.login = async(req,res) => {
 	} catch (error) {
 		console.log(error);
 	}
-	/*
-	//console.log(req.body);
-	const username = req.body.username;
-	const passwd = req.body.password;
-	db.query('SELECT * from users WHERE username = ?', [username], (error, results) => {
-		if(error){
-			console.log(error);
+}
+
+exports.register = async(req,res) => {
+	try{
+		const {username, password, confirmPassword} = req.body;
+		if(!username || !password || !confirmPassword) {
+			return res.render('register',{
+				message: "Form Incomplete"
+			})
+		} else if(password !== confirmPassword) {
+			return res.render('register',{
+				message: "Password and Confirm Password does not match"
+			})
 		}
-		
-		if(results.length === 0 || results[0].password!==passwd){
+		db.query('SELECT * from users WHERE username = ?', [username], async(error,results) => {
+			if(results.length>0) {
+				res.render('register', {
+					message: 'Username already exist'
+				});
+			} else {
+				//valid user
+				let hashedPassword = await bcrypt.hash(password,8);
+				//console.log(hashedPassword);
+				db.query('INSERT INTO users SET ?',{username: username, password:hashedPassword}, (error, results) => {
+					if(error){
+						console.log(error);
+					} else {
+						res.render('register', {
+							success: 'Registration Succesful'
+						});
+					}
+				})
+			}
 			
-			return res.render('login', {
-				message: 'Username or password is Incorrect'
-			});
-		}
-		else
-		{
-			res.send("graphPlot");
-		}
-		
-	})
-	//res.send("graphPlot");
-	
-	*/
+		})
+	} catch (error) {
+		console.log(error);
+	}
 }
