@@ -24,10 +24,12 @@ exports.login = async(req,res) => {
 			if(results.length===0 || !(await bcrypt.compare(password,results[0].password))) {
 				res.status(401).render('login', {
 					message: 'Username or password is Incorrect'
-				})
+				});
 			} else {
 				//valid user
-				res.render('graph');
+				res.status(200).render('graph', {
+					user: username
+				});
 			}
 		})
 	} catch (error) {

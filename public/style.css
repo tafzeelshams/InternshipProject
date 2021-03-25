@@ -4,6 +4,7 @@ nav{
 	padding: 30px 60px;
 	display: flex;
 	justify-content: space-between; 
+	
 }
 
 nav ul{
@@ -47,7 +48,7 @@ form, .content {
   padding: 20px;
   border: 1px solid #B0C4DE;
   background: white;
-  border-radius: 0px 0px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
 }
 .input-group {
   margin: 10px 0px 10px 0px;
@@ -76,7 +77,7 @@ form, .content {
 .error {
   width: 92%; 
   margin: 0px auto; 
-  padding: 10px; 
+  padding: 20px; 
   border: 1px solid #a94442; 
   color: #a94442; 
   background: #f2dede; 
@@ -88,4 +89,69 @@ form, .content {
   background: #dff0d8; 
   border: 1px solid #3c763d;
   margin-bottom: 20px;
+}
+
+.btnGraph {
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 6px;
+	padding-bottom: : 10px;
+  	margin: 10px;
+  	font-size: 20px;
+	background: #e6e6e6;
+	border: none;
+	border-radius: 5px;
+	align-items: center;
+}
+
+.btnGraph:hover {
+	color:white;
+}
+
+.plot-container.plotly {
+	width:100%;
+	height:100%;
+}
+#cardHeader {
+	width: 30%;
+	margin: 0px auto;
+	padding: 20px;
+	background: white;
+	text-align: center;
+}
+
+html, body{
+	height: 100%;
+	width: 100%;
+	border: 0;
+	margin: 0;
+}
+
+#main {
+	height: 85%;
+	width: 100%;
+	border: 0;
+	margin: 0;
+}
+
+#graphDiv{
+	height: 95%;
+	width: 100%;
+	background-color: #3d3d40;
+}
+
+#buttons {
+	display: flex;
+	justify-content: center;
+}
+
+#content {
+	margin: auto;
+	width: 55%;
+	padding: 10px;
+}
+
+#content li {
+	margin: 10px;
+	font-size: 30px;
 }

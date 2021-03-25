@@ -66,21 +66,19 @@ function initGraph(jsonArr){
   var trace1 = {
     x: timeArr,
     y: dataArr,
-    mode: 'lines+markers',
-    name: 'value',
-    line: {shape: 'spline'},
+    mode: 'lines',
+    fill: 'tozeroy',
     type: 'scatter'
   };
   var data = [trace1];
 
   var layout = {
-    height: 670,
-    width: 1440,
-    title: "Graph Plot",
+    title: "Value vs Time",
     yaxis: {
       linecolor: 'lightblue',
       linewidth: 2,
       mirror: true,
+      range: [0,100],
       title: "Value"
     },
     xaxis: {
@@ -143,22 +141,22 @@ function getByMinute5(){
     var trace1 = {
       x: jsonArr[0],
       y: jsonArr[1],
-      mode: 'lines+markers',
-      name: 'value',
-      line: {shape: 'spline'},
+      mode: 'lines',
+      fill: 'tozeroy',
       type: 'scatter'
     };  
 
     var data = [trace1];
 
     var layout = {
-      height: 670,
-      width: 1440,
-      title: "Graph Plot",
+      //height: 670,
+      //width: 1440,
+      title: "Value vs Time",
       yaxis: {
         linecolor: 'lightblue',
         linewidth: 2,
         mirror: true,
+        range: [0,100],
         title: "Value"
       },
       xaxis: {
@@ -171,6 +169,7 @@ function getByMinute5(){
         y: 0.5,
         traceorder: 'reversed',
         font: {size: 16},
+        range: [0,100],
         yref: 'paper'
       }
     };
@@ -194,22 +193,22 @@ function getByMinute15(){
     var trace1 = {
       x: jsonArr[0],
       y: jsonArr[1],
-      mode: 'lines+markers',
-      name: 'value',
-      line: {shape: 'spline'},
+      mode: 'lines',
+      fill: 'tozeroy',
       type: 'scatter'
     };  
 
     var data = [trace1];
 
     var layout = {
-      height: 670,
-      width: 1440,
-      title: "Graph Plot",
+      //height: 670,
+      //width: 1440,
+      title: "Value vs Time",
       yaxis: {
         linecolor: 'lightblue',
         linewidth: 2,
         mirror: true,
+        range: [0,100],
         title: "Value"
       },
       xaxis: {
