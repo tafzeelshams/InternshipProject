@@ -127,7 +127,7 @@ function initGraph(jsonArr){
 
 
 function getByMinute5(){
-  //console.log("Hello5");
+  console.log("Hello5");
   const xhr = new XMLHttpRequest();
   
     //xhr.open('GET','https://reqres.in/api/users');
@@ -179,7 +179,7 @@ function getByMinute5(){
 }
 
 function getByMinute15(){
-  //console.log("Hello15");
+  console.log("Hello15");
   const xhr = new XMLHttpRequest();
   
     //xhr.open('GET','https://reqres.in/api/users');
