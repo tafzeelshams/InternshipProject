@@ -19,10 +19,10 @@ Edit the `databaseConnection.py` file according to the database created in above
 `npm i express mysql dotenv hbs bcryptjs`
 
 ##### Create .env file and update database details
-DATABASE = `<databaseName>`  
-DATABASE_HOST = `<hostName>`  
-DATABASE_USER = `<username>`  
-DATABASE_PASSWORD = `<password>`  
+`DATABASE = <database name>`  
+`DATABASE_HOST = <host name>`  
+`DATABASE_USER = <username>`  
+`DATABASE_PASSWORD = <password>`  
 
 ##### Start the NodeJS application by executing
 `node app.js`  
@@ -44,4 +44,4 @@ By executing `valueGenerator.py` file in `./database/feeder`
 Login to see the graph.
 
 ***
-#### Note : the application is listening on port 3001, if port is unavailable the 3001 has to be replaced by available port no in file ./public/graphPlot.js
+#### Note : the application is listening on port 3001, if port is unavailable then add `PORT = <port number>`  in .env file stated in Step 3.

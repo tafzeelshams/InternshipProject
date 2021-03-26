@@ -18,7 +18,7 @@ function formatData(dataArray) {
     valueList[i] = dataArray[i].Value;
   }
   jsonArray = [timeList, valueList];
-  console.log("in FormatData()...\n");
+  //console.log("in FormatData()...\n");
   //console.log(jsonArray);
   return jsonArray;
 }
@@ -26,10 +26,9 @@ function formatData(dataArray) {
 
 function initialCall(){
   const xhr = new XMLHttpRequest();
-    
-  //xhr.open('GET','https://reqres.in/api/users');
   
-  xhr.open('GET','http://localhost:3001/api/init');
+  //xhr.open('GET','http://localhost:3001/api/init');
+  xhr.open('GET','/api/init');
   xhr.onload = () => {
     const data = JSON.parse(xhr.response);
     var jsonArr = formatData(data);
@@ -46,7 +45,7 @@ function goLive(){
     
   //xhr.open('GET','https://reqres.in/api/users');
   
-  xhr.open('GET','http://localhost:3001/api/init');
+  xhr.open('GET','/api/init');
   xhr.onload = () => {
     const data = JSON.parse(xhr.response);
     var jsonArr = formatData(data);
@@ -105,7 +104,7 @@ function initGraph(jsonArr){
   
     //xhr.open('GET','https://reqres.in/api/users');
     
-    xhr.open('GET','http://localhost:3001/api/seconds/5');
+    xhr.open('GET','/api/seconds/5');
     xhr.onload = () => {
       const data = JSON.parse(xhr.response);
       var arr = formatData(data);
@@ -132,7 +131,7 @@ function getByMinute5(){
   
     //xhr.open('GET','https://reqres.in/api/users');
     
-  xhr.open('GET','http://localhost:3001/api/seconds/300');
+  xhr.open('GET','/api/seconds/300');
   xhr.onload = () => {
     const dataApi = JSON.parse(xhr.response);
     var jsonArr = formatData(dataApi);
@@ -184,7 +183,7 @@ function getByMinute15(){
   
     //xhr.open('GET','https://reqres.in/api/users');
     
-  xhr.open('GET','http://localhost:3001/api/seconds/1500');
+  xhr.open('GET','/api/seconds/1500');
   xhr.onload = () => {
     const dataApi = JSON.parse(xhr.response);
     var jsonArr = formatData(dataApi);
