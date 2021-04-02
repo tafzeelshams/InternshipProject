@@ -39,7 +39,7 @@ nav li a:hover{
   text-align: center;
   border: 1px solid #B0C4DE;
   border-bottom: none;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 20px 20px 20px 20px;
   padding: 20px;
 }
 form, .content {
@@ -48,7 +48,7 @@ form, .content {
   padding: 20px;
   border: 1px solid #B0C4DE;
   background: white;
-  border-radius: 10px 10px 10px 10px;
+  border-radius: 5px;
 }
 .input-group {
   margin: 10px 0px 10px 0px;
@@ -91,20 +91,7 @@ form, .content {
   margin-bottom: 20px;
 }
 
-.btnGraph {
-	padding-left: 30px;
-	padding-right: 30px;
-	padding-top: 6px;
-	padding-bottom: : 10px;
-  	margin: 10px;
-  	font-size: 20px;
-	background: #e6e6e6;
-	border: none;
-	border-radius: 5px;
-	align-items: center;
-}
-
-.btnGraph:hover {
+.btn:hover {
 	color:white;
 }
 
@@ -140,7 +127,7 @@ html, body{
 	background-color: #3d3d40;
 }
 
-#buttons {
+#options {
 	display: flex;
 	justify-content: center;
 }

@@ -13,4 +13,7 @@ router.get('/register',(req,res) =>{
 	res.render('register');
 });
 
+router.get('/graphPlot',(req,res) =>{
+	res.render('graph');
+});
 module.exports = router;

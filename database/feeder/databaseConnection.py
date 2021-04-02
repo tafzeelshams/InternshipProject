@@ -12,5 +12,6 @@ class databaseConnector(object):
 
     def insertRow(self, value):
         #with self.cur:
-        self.cur.execute(f"INSERT INTO timeValue (Time,Value) VALUES (current_timestamp,'{value}')")
+        #self.cur.execute(f"INSERT INTO timeValue (Time,Value) VALUES (current_timestamp,'{value}')")
+        self.cur.execute(f"INSERT INTO timeValue (Time,Value) VALUES (now(),'{value}')")
         self.db.commit()

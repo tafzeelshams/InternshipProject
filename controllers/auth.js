@@ -27,9 +27,12 @@ exports.login = async(req,res) => {
 				});
 			} else {
 				//valid user
+				/*
 				res.status(200).render('graph', {
 					user: username
 				});
+				*/
+				res.redirect("/graphPlot");
 			}
 		})
 	} catch (error) {

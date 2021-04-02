@@ -20,16 +20,24 @@
 		</ul>
 	</nav>
 	<div id=main>
-		<div id=buttons>
-			<button type="button" id="Live"  class = btnGraph value="Live"  >Default</button>
-			<button type="button" id="5_min" class = btnGraph value="5 min">5 min</button>
-			<button type="button" id="15_min" class = btnGraph value="15 min">15 min</button>
+		<div id=options>
+			<button type="button" id="Live"  class = btn>Go Live</button>
+			<button type="button" id="5_min" class = btn>5 min</button>
+			<button type="button" id="15_min" class = btn>15 min</button>
+			<label> Start Time</label>
+			<input type="datetime-local" id="startTime" name="startTime">
+			<label>End Time</label>
+			<input type="datetime-local" id="endTime" name="endTime">
+			<button type="button" id="plotRange" class = btn>Plot Range</button>
 		</div>
-		<div id='graphDiv'>
+		<div>
+			<div id='graphDiv'>
 				<script>
-					initialCall();
+					goLive();
 				</script>
+			</div>
 		</div>
+		
 	</div>
 </body>
 </html>
