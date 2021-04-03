@@ -12,17 +12,17 @@ window.onload=function(){
 
 var v1 = []
 
-/*
+
 function convertTZ(date, tzString) {
     return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: tzString}));   
 }
-*/
+
 
 function formatData(dataArray) {
   var timeList =[], valueList=[];
   for(var i = 0; i < dataArray.length; i++) {
-    //timeList[i] = convertTZ(dataArray[i].Time, "Asia/Kolkata")
-    timeList[i] = dataArray[i].Time;
+    timeList[i] = convertTZ(dataArray[i].Time, "Asia/Kolkata")
+    //timeList[i] = dataArray[i].Time;
     valueList[i] = dataArray[i].Value;
   }
   jsonArray = [timeList, valueList];
@@ -104,13 +104,27 @@ function plotByRange(){
      alert("Fill start and end times");   
      return false; 
   }
-  if (a > b)
+  else if (a > b)
   {
    alert("Start date should be before end date.");    
      return false; 
+  }
+  else{
+    clearInterval(v1);
+    var timeStart = (new Date(a)).toISOString();
+    var timeEnd = (new Date(b)).toISOString();  
+    console.log("Start Time "+ timeStart," End time "+ timeEnd);
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET',`/api/rangeQuery/${timeStart}/${timeEnd}`);
+    xhr.onload = () => {
+      const dataApi = JSON.parse(xhr.response);
+      var jsonArr = formatData(dataApi);
+      console.log(jsonArr);
+      plotStaticGraph(jsonArr);
+    }
+    xhr.send();
+    return true;
   } 
-  console.log("Start Date "+a," End date "+b);  
-     return true; 
 }
 
 
