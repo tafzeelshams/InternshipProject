@@ -7,6 +7,7 @@ window.onload=function(){
   getD15min.addEventListener('click',plotLast15Minutes);
   plotRange.addEventListener('click',plotByRange);
   live.addEventListener('click',goLive);
+  goLive();
 }
 
 
@@ -53,6 +54,7 @@ function callApi(){
 
 function goLive(){
   clearInterval(v1);
+  onlyLeft();
   const xhr = new XMLHttpRequest();
   xhr.open('GET','/api/init');
   xhr.onload = () => {
@@ -69,6 +71,7 @@ function goLive(){
 
 function plotLast5Minutes(){
   clearInterval(v1);
+  both();
   console.log("Hello5");
   const xhr = new XMLHttpRequest();
   xhr.open('GET','/api/seconds/500');
@@ -83,6 +86,7 @@ function plotLast5Minutes(){
 
 function plotLast15Minutes(){
   clearInterval(v1);
+  both();
   console.log("Hello15");
   const xhr = new XMLHttpRequest();
   xhr.open('GET','/api/seconds/1500');
@@ -111,6 +115,7 @@ function plotByRange(){
   }
   else{
     clearInterval(v1);
+    both();
     var timeStart = (new Date(a)).toISOString();
     var timeEnd = (new Date(b)).toISOString();  
     console.log("Start Time "+ timeStart," End time "+ timeEnd);
@@ -165,4 +170,21 @@ function plotStaticGraph(jsonArr){
     };
     Plotly.newPlot('graphDiv', data, layout);
     console.log("New");
+}
+
+function onlyLeft(){
+  console.log("onlyLeft");
+  var x = document.getElementById("tableDiv");
+  x.style.display = "none";
+  var y = document.getElementById("graphDiv");
+  y.style.width = "100%";  
+}
+
+function both(){
+  console.log("both");
+  var x = document.getElementById("tableDiv");
+  x.style.display = "block";
+  x.style.width = "30%";
+  var y = document.getElementById("graphDiv");
+  y.style.width = "70%";
 }

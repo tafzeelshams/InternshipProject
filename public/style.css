@@ -1,35 +1,10 @@
-nav{
-	background-color: #563d7c;
-	color: #fff;
-	padding: 30px 60px;
-	display: flex;
-	justify-content: space-between; 
-	
+html, body{
+	height: 100%;
+	width: 100%;
+	border: 0;
+	margin: 0;
 }
 
-nav ul{
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-}
-
-nav li{
-	list-style: none;
-}
-
-nav li a{
-	color: #fff;
-	text-decoration: none;
-	font-weight: bold;
-	padding: 5px 8px;
-}
-
-nav li a:hover{
-	color: yellow;
-	text-decoration: none;
-}
-
-///new
 
 .header {
   width: 30%;
@@ -99,38 +74,86 @@ form, .content {
 	width:100%;
 	height:100%;
 }
-#cardHeader {
-	width: 30%;
-	margin: 0px auto;
-	padding: 20px;
-	background: white;
-	text-align: center;
+
+
+
+nav{
+	background-color: #563d7c;
+	color: #fff;
+	padding: 30px 60px;
+	display: flex;
+	justify-content: space-between; 
+	
 }
 
-html, body{
-	height: 100%;
-	width: 100%;
-	border: 0;
-	margin: 0;
+nav ul{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
+
+nav li{
+	list-style: none;
+}
+
+nav li a{
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 5px 8px;
+}
+
+nav li a:hover{
+	color: yellow;
+	text-decoration: none;
+}
+
+
 
 #main {
+	display: block;
 	height: 85%;
 	width: 100%;
-	border: 0;
-	margin: 0;
-}
-
-#graphDiv{
-	height: 95%;
-	width: 100%;
-	background-color: #3d3d40;
 }
 
 #options {
+	height: 5%;
+	width: 100%;
+	padding-bottom: 5px;
+	padding-top: 5px;
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
 }
+
+.optionsBtn{
+	width: 45%;
+	display: flex;
+	justify-content: inherit;
+}
+
+#graphMain{
+	display: flex;
+	width: 100%;
+	height: 95%;
+	background-color: #3d3d40;
+}
+
+#graphDiv{
+	background-color: #3d3d40;
+	width: 100%;
+	padding: 5px;
+	display: block;
+}
+
+#tableDiv{
+	background-color: white;
+	flex-grow: : 100;
+	padding: 5px;
+}
+
+
+
+
 
 #content {
 	margin: auto;
@@ -141,4 +164,12 @@ html, body{
 #content li {
 	margin: 10px;
 	font-size: 30px;
+}
+
+#cardHeader {
+	width: 30%;
+	margin: 0px auto;
+	padding: 20px;
+	background: white;
+	text-align: center;
 }
