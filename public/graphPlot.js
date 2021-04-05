@@ -135,41 +135,42 @@ function plotByRange(){
 
 function plotStaticGraph(jsonArr){
   var trace1 = {
-      x: jsonArr[0],
-      y: jsonArr[1],
-      mode: 'lines',
-      fill: 'tozeroy',
-      type: 'scatter'
-    };  
+    x: jsonArr[0],
+    y: jsonArr[1],
+    mode: 'lines',
+    fill: 'tozeroy',
+    type: 'scatter'
+  };  
 
-    var data = [trace1];
+  var data = [trace1];
 
-    var layout = {
-      //height: 670,
-      //width: 1440,
-      title: "Value vs Time",
-      yaxis: {
-        linecolor: 'lightblue',
-        linewidth: 2,
-        mirror: true,
-        range: [0,100],
-        title: "Value"
-      },
-      xaxis: {
-        linecolor: 'lightblue',
-        linewidth: 2,
-        mirror: true,
-        title: "Time"
-      },
-      legend: {
-        y: 0.5,
-        traceorder: 'reversed',
-        font: {size: 16},
-        yref: 'paper'
-      }
-    };
-    Plotly.newPlot('graphDiv', data, layout);
-    console.log("New");
+  var layout = {
+    //height: 670,
+    //width: 1440,
+    title: "Value vs Time",
+    yaxis: {
+      linecolor: 'lightblue',
+      linewidth: 2,
+      mirror: true,
+      range: [0,100],
+      title: "Value"
+    },
+    xaxis: {
+      linecolor: 'lightblue',
+      linewidth: 2,
+      mirror: true,
+      title: "Time"
+    },
+    legend: {
+      y: 0.5,
+      traceorder: 'reversed',
+      font: {size: 16},
+      yref: 'paper'
+    }
+  };
+  Plotly.newPlot('graphDiv', data, layout);
+  console.log("New");
+  feedTable(jsonArr);
 }
 
 function onlyLeft(){
@@ -187,4 +188,54 @@ function both(){
   x.style.width = "30%";
   var y = document.getElementById("graphDiv");
   y.style.width = "70%";
+}
+
+function feedTable(jsonArr){
+  var table = document.getElementById("tblBody");
+  table.innerHTML = "";
+  for (var i = 0; i < jsonArr[0].length; i++) {
+    var row = document.createElement('tr');
+    var cell1 = document.createElement('td');
+    cell1.innerText=jsonArr[0][i];
+    row.append(cell1);
+    var cell2 = document.createElement('td');
+    cell2.innerText=jsonArr[1][i];
+    row.append(cell2);
+    var cell3 = document.createElement('td');
+    cell3.innerHTML='<button type="button" class = dltBtn onclick = deleteRow() >Delete</button>';
+    row.append(cell3);
+    table.append(row);
+  }
+}
+
+function deleteRow()
+{
+  //console.log(jsonArr);
+  // event.target will be the input element.
+  var td = event.target.parentNode;
+  var tr = td.parentNode;// the row to be removed
+  var timeCol = tr.children[0].innerText;
+  console.log(timeCol);
+  tr.parentNode.removeChild(tr);
+  var table= document.getElementById('tblBody');
+  var obj = table.rows.item(0).cells;
+  var timeArr = [];
+  var valueArr = [];
+  for(var i=0; i<table.rows.length; i++ ){
+    var obj = table.rows.item(i).cells;
+    timeArr.push(new Date(obj[0].innerText));
+    valueArr.push(obj[1].innerText);
+  }
+  //console.log(timeArr);
+  //console.log(valueArr);
+  var jsonArr = [timeArr,valueArr];
+  plotStaticGraph(jsonArr);
+  var delTime = (new Date(timeCol)).toISOString();
+  console.log(delTime);
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET',`/api/deleteRow/${delTime}`);
+  xhr.onload = () => {
+    
+  }
+  xhr.send();
 }

@@ -147,13 +147,27 @@ nav li a:hover{
 
 #tableDiv{
 	background-color: white;
-	flex-grow: : 100;
 	padding: 5px;
 }
 
+#tbl {
+	width:100%;
+}
 
+table, th, td{
+	border: 1px solid black;
+	text-align: center;
+}
 
+.dltBtn {
+	background-color: #FA7E7E;
 
+}
+
+.scrollit {
+    overflow: scroll;
+    height:100%;
+}
 
 #content {
 	margin: auto;

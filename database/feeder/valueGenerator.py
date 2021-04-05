@@ -10,9 +10,9 @@ def main():
 		sign = randint(0,1)
 		delta = randint(0,40)
 		if sign==0:
-			prev = math.ceil(prev + (delta/100)*prev)%100
+			prev = math.ceil(prev + (delta/100)*prev + 7)%100
 		elif sign==1:
-			prev = math.ceil(prev - (delta/100)*prev)%100
+			prev = math.ceil(prev - (delta/100)*prev + 3)%100
 		print(prev)
 		database.insertRow(prev)
 		time.sleep(5)
