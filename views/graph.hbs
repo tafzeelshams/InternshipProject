@@ -27,9 +27,9 @@
 				<button type="button" id="15_min" class = btn>15 min</button>
 			</div>
 			<div class = optionsBtn>
-				<label style="font-size: 25px"> Start Time :</label>
+				<label style="font-size: 21px"> Start Time :</label>
 				<input type="datetime-local" id="startTime" name="startTime">
-				<label style="font-size: 25px">End Time :</label>
+				<label style="font-size: 21px">End Time :</label>
 				<input type="datetime-local" id="endTime" name="endTime">
 				<button type="button" id="plotRange" class = btn>Plot Range</button>
 			</div>
@@ -41,6 +41,11 @@
 				</script>
 			</div>
 			<div id='tableDiv' class= scrollit>
+				<div id="orderOptions">
+					<label style="font-size: 17px"> Order By :</label>
+					<button type="button" id="timeSort" class = btn onclick="feedTableTimeSorted()">Time</button>
+					<button type="button" id="valueSort" class = btn onclick="feedTableValueSorted()">Value</button>
+				</div>
 				<table id="tbl">
 					<thead>
 						<tr>

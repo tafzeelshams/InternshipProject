@@ -150,6 +150,11 @@ nav li a:hover{
 	padding: 5px;
 }
 
+#orderOptions{
+	margin: 5px;
+	display: block;
+}
+
 #tbl {
 	width:100%;
 }

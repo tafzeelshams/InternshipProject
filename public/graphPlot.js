@@ -80,6 +80,7 @@ function plotLast5Minutes(){
     var jsonArr = formatData(dataApi);
     console.log(jsonArr);
     plotStaticGraph(jsonArr);
+    feedTable(jsonArr);
   }
   xhr.send();
 }
@@ -95,6 +96,7 @@ function plotLast15Minutes(){
     var jsonArr = formatData(dataApi);
     console.log(jsonArr);
     plotStaticGraph(jsonArr);
+    feedTable(jsonArr);
   }
   xhr.send();
 }
@@ -126,6 +128,7 @@ function plotByRange(){
       var jsonArr = formatData(dataApi);
       console.log(jsonArr);
       plotStaticGraph(jsonArr);
+      feedTable(jsonArr);
     }
     xhr.send();
     return true;
@@ -170,7 +173,7 @@ function plotStaticGraph(jsonArr){
   };
   Plotly.newPlot('graphDiv', data, layout);
   console.log("New");
-  feedTable(jsonArr);
+  //feedTable(jsonArr);
 }
 
 function onlyLeft(){
@@ -210,13 +213,24 @@ function feedTable(jsonArr){
 
 function deleteRow()
 {
-  //console.log(jsonArr);
   // event.target will be the input element.
   var td = event.target.parentNode;
   var tr = td.parentNode;// the row to be removed
   var timeCol = tr.children[0].innerText;
   console.log(timeCol);
   tr.parentNode.removeChild(tr);
+  plotStaticGraph(sortByTime());
+  var delTime = (new Date(timeCol)).toISOString();
+  console.log(delTime);
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET',`/api/deleteRow/${delTime}`);
+  xhr.onload = () => {
+    
+  }
+  xhr.send();
+}
+
+function getJsonArr(){
   var table= document.getElementById('tblBody');
   var obj = table.rows.item(0).cells;
   var timeArr = [];
@@ -229,13 +243,48 @@ function deleteRow()
   //console.log(timeArr);
   //console.log(valueArr);
   var jsonArr = [timeArr,valueArr];
-  plotStaticGraph(jsonArr);
-  var delTime = (new Date(timeCol)).toISOString();
-  console.log(delTime);
-  const xhr = new XMLHttpRequest();
-  xhr.open('GET',`/api/deleteRow/${delTime}`);
-  xhr.onload = () => {
-    
-  }
-  xhr.send();
+  return jsonArr;
+}
+
+
+function sortByTime(){
+  var jsonArr = getJsonArr();
+    for(var i=0;i<jsonArr[0].length;i++){
+        for(var j=0;j<jsonArr[0].length-i-1;j++){
+            if(jsonArr[0][j]>jsonArr[0][j+1]){
+                var temp=jsonArr[0][j];
+                jsonArr[0][j]=jsonArr[0][j+1];
+                jsonArr[0][j+1]=temp;
+                temp=jsonArr[1][j];
+                jsonArr[1][j]=jsonArr[1][j+1];
+                jsonArr[1][j+1]=temp;
+            }
+        }
+    }
+    return jsonArr;
+}
+
+function feedTableTimeSorted(){
+  feedTable(sortByTime());
+}
+
+function sortByValue(){
+  var jsonArr = getJsonArr();
+    for(var i=0;i<jsonArr[1].length;i++){
+        for(var j=0;j<jsonArr[1].length-i-1;j++){
+            if(parseInt(jsonArr[1][j])>parseInt(jsonArr[1][j+1])){
+                var temp=jsonArr[1][j];
+                jsonArr[1][j]=jsonArr[1][j+1];
+                jsonArr[1][j+1]=temp;
+                temp=jsonArr[0][j];
+                jsonArr[0][j]=jsonArr[0][j+1];
+                jsonArr[0][j+1]=temp;
+            }
+        }
+    }
+    return jsonArr;   
+}
+
+function feedTableValueSorted(){
+  feedTable(sortByValue());
 }
